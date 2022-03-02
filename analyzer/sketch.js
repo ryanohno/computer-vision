@@ -3,14 +3,6 @@ let detections = [];
 let video;
 let canvas;
 
-
-
-// let words = [];
-// let wordFall = setInterval(makeWord, 100);
-// let letters = ['H', 'A', 'P', 'P',] 
-
-
-
 function setup() {
   canvas = createCanvas(480, 360);
   canvas.id("canvas");
@@ -28,9 +20,6 @@ function setup() {
   };
   faceapi = ml5.faceApi(video, faceOptions, faceReady);
 }
-
-
-
 
 
 function faceReady() {
@@ -101,7 +90,8 @@ function drawExpressions(detections, x, y, textYSpace) {
     pop()
 
     happyFace(happy);
-    // sadFace(Sad);
+    sadFace(sad);
+    surprisedFace(surprised);
 
 
 
@@ -125,7 +115,7 @@ function drawExpressions(detections, x, y, textYSpace) {
 function happyFace(h) {
   if(h * 100 >95) {
     push();
-    translate(width, 0);
+    translate(width, 20);
     scale(-1, 1);
     fill(255, 0, 0);
     text("HAPPY FACE", 20, 20);
@@ -134,12 +124,26 @@ function happyFace(h) {
   else{}
 }
   
-  // function sadFace(h) {
-  //   if(h * 100 >95) {
-  //     push();
-  //     translate(width, 0);
-  //     scale(-1, 1);
-  //     fill(0, 255, 0);
-  //     text("SAD FACE", 20, 20);
-  //     pop();
-  //   }
+  function sadFace(h) {
+    if(h * 100 >80) {
+      push();
+      translate(width, 20);
+      scale(-1, 1);
+      fill(222, 219, 24);
+      text("SAD FACE ALERT", 20, 20);
+      pop();
+    }
+    else{}
+  }
+
+  function surprisedFace(h) {
+    if(h * 100 >80) {
+      push();
+      translate(width, 20);
+      scale(-1, 1);
+      fill(242, 240, 255);
+      text("What's Going ON!", 20, 20);
+      pop();
+    }
+    else{}
+  }

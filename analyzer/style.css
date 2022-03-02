@@ -1,3 +1,33 @@
+blink {
+  -webkit-animation: 1.5s linear infinite condemned_blink_effect; /* for Safari 4.0 - 8.0 */
+  animation: 1.5s linear infinite condemned_blink_effect;
+}
+
+/* for Safari 4.0 - 8.0 */
+@-webkit-keyframes condemned_blink_effect {
+  0% {
+    visibility: hidden;
+  }
+  50% {
+    visibility: hidden;
+  }
+  100% {
+    visibility: visible;
+  }
+}
+
+@keyframes condemned_blink_effect {
+  0% {
+    visibility: hidden;
+  }
+  50% {
+    visibility: hidden;
+  }
+  100% {
+    visibility: visible;
+  }
+}
+
 body {
   background-color: black;
   
@@ -7,16 +37,20 @@ body {
 
 #canvas{
   position: absolute;
-  top: 10px;
-  left: 10px;
+  left: 35%;
+  top: 30%;
+  /* top: 10px;
+  left: 10px; */
   z-index: 1;
   transform: scale(-1, 1);
 }
 
 #video{
   position: absolute;
-  top: 0px;
-  left: 0px;
+  left: 35%;
+  top: 30%;
+  /* top: 0px;
+  left: 0px; */
   z-index: 0;
   transform: scale(-1, 1);
 
