@@ -29,6 +29,12 @@ function setup() {
   faceapi = ml5.faceApi(video, faceOptions, faceReady);
 }
 
+function draw() {
+  clear();
+  drawBoxs(detections);//Draw detection box: 
+  drawLandmarks(detections);//// Draw all the face points: 
+  drawExpressions(detections, 20, 250, 14);//Draw face expression:
+}
 
 
 
@@ -48,9 +54,9 @@ function gotFaces(error, result) {
   // console.log(detections);
 
   clear();//Draw transparent background;: 
-  drawBoxs(detections);//Draw detection box: 
-  drawLandmarks(detections);//// Draw all the face points: 
-  drawExpressions(detections, 20, 250, 14);//Draw face expression:
+  // drawBoxs(detections);//Draw detection box: 
+  // drawLandmarks(detections);//// Draw all the face points: 
+  // drawExpressions(detections, 20, 250, 14);//Draw face expression:
 
   faceapi.detect(gotFaces);// Call the function again at here: 
 }
@@ -100,8 +106,7 @@ function drawExpressions(detections, x, y, textYSpace) {
     text("😦: " + nf(fearful * 100, 2, 2) + "%", x, y + textYSpace * 6);
     pop()
 
-    happyFace(happy);
-    // sadFace(Sad);
+   happyFace(happy);
 
 
 
@@ -119,27 +124,22 @@ function drawExpressions(detections, x, y, textYSpace) {
     pop();
   }
 
+  // happyFace(happy);
   
 }
 
 function happyFace(h) {
-  if(h * 100 >95) {
-    push();
+  if(h * 100 >85) {
+    fill(255, 0, 0);
+    newFunction();
+  }
+
+  function newFunction() {
+    push()
     translate(width, 0);
     scale(-1, 1);
-    fill(255, 0, 0);
+
     text("HAPPY FACE", 20, 20);
-    pop();
+    
   }
-  else{}
 }
-  
-  // function sadFace(h) {
-  //   if(h * 100 >95) {
-  //     push();
-  //     translate(width, 0);
-  //     scale(-1, 1);
-  //     fill(0, 255, 0);
-  //     text("SAD FACE", 20, 20);
-  //     pop();
-  //   }

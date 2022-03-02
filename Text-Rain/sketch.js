@@ -29,6 +29,7 @@ function draw() {
   image(capture, 0, 0);
   // do calculations
   capture.loadPixels();
+  
 
   if (capture.pixels.length > 0) {
     
