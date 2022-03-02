@@ -125,7 +125,7 @@ function happyFace(h) {
 }
   
   function sadFace(h) {
-    if(h * 100 >80) {
+    if(h * 100 >75) {
       push();
       translate(width, 20);
       scale(-1, 1);
